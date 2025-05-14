@@ -11,6 +11,7 @@ import com.gestioncursos.main.model.Curso;
 import com.gestioncursos.main.service.CursoService;
 
 @RestController
+@RequestMapping("/curso")
 public class CursoController {
     @Autowired
     private CursoService cursoService;
