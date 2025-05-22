@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gestioncursos.main.model.Curso;
+import com.gestioncursos.main.model.dto.CursoDto;
 import com.gestioncursos.main.service.CursoService;
 
 @RestController
@@ -44,5 +45,13 @@ public class CursoController {
     @PostMapping("/eliminarCurso/{idCurso}")
     public ResponseEntity<String> eliminarCurso(@PathVariable String idCurso) {
         return ResponseEntity.ok(cursoService.eliminarCurso(idCurso));
+    }
+    @GetMapping("/obtenerCursoDTO/{idCurso}")
+    public ResponseEntity<CursoDto> obtenerCursoDTO(@PathVariable String idCurso) {
+        if (cursoService.obtenerCursoDto(idCurso) != null) {
+            return ResponseEntity.ok(cursoService.obtenerCursoDto(idCurso));
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 }

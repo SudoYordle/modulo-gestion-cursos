@@ -2,6 +2,7 @@ package com.gestioncursos.main.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.gestioncursos.main.model.Curso;
+import com.gestioncursos.main.model.dto.CursoDto;
 import com.gestioncursos.main.model.entity.CursoEntity;
 import com.gestioncursos.main.repository.CursoRepository;
 
@@ -90,5 +91,19 @@ public class CursoService {
         catch (Exception e){
             return "Error al eliminar el curso: " + e.getMessage();
         }
+    }
+    public CursoDto obtenerCursoDto(String idCurso){
+        try{
+            CursoEntity curso = cursoRepository.findByIdCurso(idCurso);
+            CursoDto nuevoCursoDto = new CursoDto(
+                curso.getNombre(),
+                curso.getDescripcion(),
+                curso.getFechaInicio(),
+                curso.getFechaFin()
+            );
+            return nuevoCursoDto;
+        }catch (Exception e){
+            return null;
+            }
     }
 }
