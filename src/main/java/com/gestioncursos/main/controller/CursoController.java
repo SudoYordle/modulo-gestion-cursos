@@ -24,12 +24,25 @@ public class CursoController {
         return ResponseEntity.ok(cursoService.crearCurso(curso));
     }
     @GetMapping("/obtenerCurso/{idCurso}")
-    public ResponseEntity<Curso> obtenerCurso(@PathVariable int idCurso) {
+    public ResponseEntity<Curso> obtenerCurso(@PathVariable String idCurso) {
         Curso curso = cursoService.obtenerCurso(idCurso);
         if (curso != null) {
             return ResponseEntity.ok(curso);
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+    @PostMapping("/modificarCurso")
+    public ResponseEntity<String> modificarCurso(@RequestBody Curso curso) {
+        return ResponseEntity.ok(cursoService.modificarCurso(curso));
+    }
+    @GetMapping("/listarCursos")
+    public ResponseEntity<String> listarCursos() {
+        return ResponseEntity.ok(cursoService.listarCursos());
+    }
+
+    @PostMapping("/eliminarCurso/{idCurso}")
+    public ResponseEntity<String> eliminarCurso(@PathVariable String idCurso) {
+        return ResponseEntity.ok(cursoService.eliminarCurso(idCurso));
     }
 }
