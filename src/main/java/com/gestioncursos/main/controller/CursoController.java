@@ -27,7 +27,7 @@ public class CursoController {
         return ResponseEntity.ok(cursoService.crearCurso(curso));
     }
 
-    @Operation(summary = "Este endpoint permite obtener un curso por su id")
+    @Operation(summary = "Este endpoint permite obtener un curso por su id de curso")
     @GetMapping("/obtenerCurso/{idCurso}")
     public ResponseEntity<Curso> obtenerCurso(@PathVariable String idCurso) {
         Curso curso = cursoService.obtenerCurso(idCurso);
